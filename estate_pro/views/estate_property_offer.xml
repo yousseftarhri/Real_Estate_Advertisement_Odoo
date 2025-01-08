@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action for estate property -->
+    <record id="estate_property_offer_view" model="ir.actions.act_window">
+        <field name="name">Estate property offer</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="domain">[('property_type_id','=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="estate_property_offer_tree" model="ir.ui.view">
+        <field name="name">estate.property.offer.tree</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <tree string="PRO" editable="bottom" decoration-success="stats=='Accept'" decoration-danger="stats=='Refuse'">
+                <field name="price"/>
+                <field name="partner"/>
+                <field name="stats"/>
+                <button name="action_confirm" string="Confirm" type="object" icon="fa-check" invisible="stats == 'Accept' or stats == 'Refuse'"/>
+                <button name="action_cancel" string="Cancel" type="object" icon="fa-times" invisible="stats == 'Accept' or stats == 'Refuse'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="estate_property_offer_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Estate PRO">
+                <group>
+                <field name="price"/>
+                <field name="partner"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

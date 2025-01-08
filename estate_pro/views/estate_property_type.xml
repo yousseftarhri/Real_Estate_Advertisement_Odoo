@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- Action for estate property -->
+    <record id="estate_property_type_view" model="ir.actions.act_window">
+        <field name="name">Property type</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="estate_property_type_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <tree string="type">
+                <field name="name"/>
+                <field name="sequence" widget="handle"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+        <record id="estate_property_type_view_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="type">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="action" name="%(estate_pro.estate_property_offer_view)d" icon="fa-money">
+                    <field string="Offers" name="offer_count" widget="statinfo"/>
+                    </button>
+                </div>
+
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <notebook>
+                    <page string="Properties">
+                        <field name="property_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="expected_price"/>
+                                <field name="stats"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+            <record id="estate_property_type_view_offer" model="ir.ui.view">
+        <field name="name">estate.property.type.offer</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="type">
+                <field name="offer_ids" readonly="1">
+                    <tree>
+                        <field name="price"/>
+                        <field name="partner"/>
+                        <field name="stats"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
